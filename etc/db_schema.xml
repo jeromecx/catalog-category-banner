@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="jeromecx_catalog_category_banner" resource="default"
+           engine="innodb" comment="JeromeCx Catalog Category Banner Table">
+        <column xsi:type="smallint" name="banner_id" padding="6" unsigned="true" nullable="false" identity="true"
+                comment="Banner ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Banner Title"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Banner Image"/>
+        <column xsi:type="varchar" name="image_alt" nullable="false" length="128" comment="Banner Image Alt text"/>
+        <column xsi:type="varchar" name="cta_content" nullable="false" length="64" comment="Banner CTA text Content"/>
+        <column xsi:type="varchar" name="cta_url" nullable="false" length="255" comment="Banner CTA External URL"/>
+        <column xsi:type="boolean" name="is_active" nullable="false" default="true" comment="Is Banner Active"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <column xsi:type="date" name="date_from" comment="First Date of Banner Activity"/>
+        <column xsi:type="date" name="date_to" comment="Last Date of Banner Activity"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="banner_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="JEROMECX_CATALOG_CATEGORY_BANNER_TITLE">
+            <column name="title"/>
+        </constraint>
+    </table>
+    <table name="jeromecx_catalog_category_banner_store" resource="default" engine="innodb"
+           comment="JeromeCx Catalog Category Banner To Store Linkage Table">
+        <column xsi:type="smallint" name="banner_id" padding="6" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false"
+                comment="Store ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="banner_id"/>
+            <column name="store_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FK_D60E1C40E73FB915E979114A539253D8"
+                    table="jeromecx_catalog_category_banner_store" column="banner_id"
+                    referenceTable="jeromecx_catalog_category_banner" referenceColumn="banner_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="JEROMECX_CATALOG_CATEGORY_BANNER_STORE_STORE_ID_STORE_STORE_ID"
+                    table="jeromecx_catalog_category_banner_store"
+                    column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+        <index referenceId="JEROMECX_CATALOG_CATEGORY_BANNER_STORE_STORE_ID" indexType="btree">
+            <column name="store_id"/>
+        </index>
+    </table>
+</schema>

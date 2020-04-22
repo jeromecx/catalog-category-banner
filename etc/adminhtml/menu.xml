@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="JeromeCx_CatalogCategoryBanner::banner"
+             title="Banners"
+             translate="title"
+             module="JeromeCx_CatalogCategoryBanner"
+             parent="Magento_Backend::content_elements"
+             sortOrder="70"
+             dependsOnModule="JeromeCx_CatalogCategoryBanner"
+             action="catalogcategorybanner/banner"
+             resource="JeromeCx_CatalogCategoryBanner::banner"/>
+    </menu>
+</config>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">banner_form.banner_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Banner Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="JeromeCx\CatalogCategoryBanner\Block\Adminhtml\Banner\Edit\SaveButton"/>
+            <button name="delete" class="JeromeCx\CatalogCategoryBanner\Block\Adminhtml\Banner\Edit\DeleteButton"/>
+            <button name="back" class="JeromeCx\CatalogCategoryBanner\Block\Adminhtml\Banner\Edit\BackButton"/>
+            <button name="save_and_continue" class="JeromeCx\CatalogCategoryBanner\Block\Adminhtml\Banner\Edit\SaveAndContinueButton"/>
+        </buttons>
+        <namespace>banner_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>banner_form.banner_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="banner_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="catalogcategorybanner/banner/save"/>
+        </settings>
+        <dataProvider class="JeromeCx\CatalogCategoryBanner\Ui\DataProvider\Banner\Form\DataProvider" name="banner_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>banner_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+
+    </fieldset>
+</form>

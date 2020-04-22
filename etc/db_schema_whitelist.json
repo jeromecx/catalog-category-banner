@@ -1,0 +1,35 @@
+{
+    "jeromecx_catalog_category_banner": {
+        "column": {
+            "banner_id": true,
+            "title": true,
+            "image": true,
+            "image_alt": true,
+            "cta_content": true,
+            "cta_url": true,
+            "is_active": true,
+            "created_at": true,
+            "updated_at": true,
+            "date_from": true,
+            "date_to": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "JEROMECX_CATALOG_CATEGORY_BANNER_TITLE": true
+        }
+    },
+    "jeromecx_catalog_category_banner_store": {
+        "column": {
+            "banner_id": true,
+            "store_id": true
+        },
+        "index": {
+            "JEROMECX_CATALOG_CATEGORY_BANNER_STORE_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_D60E1C40E73FB915E979114A539253D8": true,
+            "JEROMECX_CATALOG_CATEGORY_BANNER_STORE_STORE_ID_STORE_STORE_ID": true
+        }
+    }
+}
